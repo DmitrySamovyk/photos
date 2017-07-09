@@ -27937,12 +27937,20 @@ var App = function (_Component) {
   }, {
     key: 'componentWillMount',
     value: function componentWillMount() {
-      this.props.actions.getImages();
+      if (this.props.startImages.images.length === 0) {
+        this.props.actions.getImages();
+      }
     }
   }]);
 
   return App;
 }(_react.Component);
+
+function mapStateToProps(state) {
+  return {
+    startImages: state
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -27950,7 +27958,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)((0, _reactRouterDom.withRouter)(App));
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)((0, _reactRouterDom.withRouter)(App));
 
 /***/ }),
 /* 263 */
@@ -28006,12 +28014,11 @@ var AllImgs = function (_Component) {
         null,
         images.map(function (img, index) {
           return _react2.default.createElement(_Img2.default, {
-            key: index,
+            key: Math.random() + img.id,
             img: img,
             onClick: function onClick() {
               return dispatch((0, _Actions.toggleFavourite)(index));
-            },
-            isFavourite: img.isFavourite
+            }
           });
         })
       );
@@ -28085,12 +28092,11 @@ var FavouriteImgs = function (_Component) {
           return img.isFavourite;
         }).map(function (img, index) {
           return _react2.default.createElement(_Img2.default, {
-            key: index,
+            key: Math.random() + img.id,
             img: img,
             onClick: function onClick() {
               return dispatch((0, _Actions.toggleFavourite)(index));
-            },
-            isFavourite: img.isFavourite
+            }
           });
         })
       );
@@ -28287,8 +28293,6 @@ var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _redux = __webpack_require__(95);
-
 var _reactRedux = __webpack_require__(226);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -28331,7 +28335,7 @@ var Img = function (_Component) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    // toggleFavourite: bindActionCreators(toggleFavourite, dispatch)
+    dispatch: dispatch
   };
 }
 

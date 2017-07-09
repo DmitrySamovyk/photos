@@ -20,7 +20,15 @@ class App extends Component {
   }
 
   componentWillMount() {
-    this.props.actions.getImages()
+    if (this.props.startImages.images.length === 0) {
+      this.props.actions.getImages()
+    }
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    startImages: state
   }
 }
 
@@ -30,4 +38,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(withRouter(App))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App))

@@ -12,10 +12,9 @@ class AllImgs extends Component {
       <div>
         {images.map((img, index) =>
           <Img
-            key={index}
+            key={Math.random() + img.id}
             img={img}
             onClick = {() => dispatch(toggleFavourite(index))}
-            isFavourite = {img.isFavourite}
           />
         )}
       </div>

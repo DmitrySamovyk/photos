@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from "redux";
 import { connect } from 'react-redux';
 
 class Img extends Component {
@@ -16,7 +15,7 @@ class Img extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    // toggleFavourite: bindActionCreators(toggleFavourite, dispatch)
+    dispatch
   }
 }
 
