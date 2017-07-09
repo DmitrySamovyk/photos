@@ -28222,7 +28222,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var loadState = exports.loadState = function loadState() {
   try {
-    var serializedState = localStorage.getItem('Tab42State');
+    var serializedState = localStorage.getItem('AppState');
     if (serializedState === null) {
       return {};
     }
@@ -28235,7 +28235,7 @@ var loadState = exports.loadState = function loadState() {
 var saveState = exports.saveState = function saveState(state) {
   try {
     var serializedState = JSON.stringify({ state: state, timestamp: new Date().getTime() });
-    localStorage.setItem('Tab42State', serializedState);
+    localStorage.setItem('AppState', serializedState);
   } catch (err) {
     // Ignore errors
   }

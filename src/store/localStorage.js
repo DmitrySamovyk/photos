@@ -1,6 +1,6 @@
 export const loadState = () => {
   try {
-    const serializedState = localStorage.getItem('Tab42State');
+    const serializedState = localStorage.getItem('AppState');
     if ( serializedState === null) {
       return {};
     }
