@@ -1,18 +1,39 @@
-import '../scss/main.scss'
-import React from 'react'
-import { render } from 'react-dom'
-import { createStore } from "redux";
-import { Provider } from "react-redux"
+import '../scss/main.scss';
+import React from 'react';
+import { render } from 'react-dom';
+import { createStore, combineReducers, applyMiddleware, compose  } from "redux";
+import { Provider } from "react-redux";
+import thunk from 'redux-thunk';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-import App from './components/App'
+import App from './components/App';
+import images from './reducers/images';
+import api from './middleware/api';
+import { loadState, saveState } from './store/localStorage';
 
+const persistedState = loadState();
+const AllReducers = combineReducers({
+  images
+});
 
-const store = createStore( () => {}, {});
+let store = createStore(
+  AllReducers,
+  persistedState,
+  compose(
+    applyMiddleware(thunk, api),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  ),
+);
 
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+        <Route path="/" component={App}/>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );
