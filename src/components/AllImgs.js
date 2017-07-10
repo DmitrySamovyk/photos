@@ -10,11 +10,11 @@ class AllImgs extends Component {
     const { dispatch, images } = this.props;
     return (
       <div>
-        {images.map((img, index) =>
+        {images.map((img) =>
           <Img
-            key={Math.random() + img.id}
+            key={img.index}
             img={img}
-            onClick = {() => dispatch(toggleFavourite(index))}
+            onClick = {() => dispatch(toggleFavourite(img.index))}
           />
         )}
       </div>

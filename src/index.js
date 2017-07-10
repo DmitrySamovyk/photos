@@ -29,11 +29,13 @@ store.subscribe(() => {
   saveState(store.getState());
 });
 
+const container = document.getElementById('root');
+
 render(
   <Provider store={store}>
     <BrowserRouter>
         <Route path="/" component={App}/>
     </BrowserRouter>
   </Provider>,
-  document.getElementById('root')
+  container
 );

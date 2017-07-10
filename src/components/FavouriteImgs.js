@@ -10,11 +10,11 @@ class FavouriteImgs extends Component {
     const { dispatch, images } = this.props;
     return (
       <div>
-        {images.filter(img =>img.isFavourite).map((img, index) =>
+        {images.filter(img =>img.isFavourite).map((img) =>
           <Img
-            key={Math.random() + img.id}
+            key={img.index}
             img={img}
-            onClick = {() => dispatch(toggleFavourite(index))}
+            onClick = {() => dispatch(toggleFavourite(img.index))}
           />
 
         )}
