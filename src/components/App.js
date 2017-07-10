@@ -20,10 +20,11 @@ class App extends Component {
   }
 
   componentWillMount() {
-    if (this.props.startImages.images.length === 0) {
+    if (this.props.startImages.images.length < 20) {
       this.props.actions.getImages()
     }
   }
+
 }
 
 function mapStateToProps(state) {

@@ -7,7 +7,7 @@ class AllImgs extends Component {
   render() {
     const { dispatch, images } = this.props;
     return (
-      <div>
+      <div className="images-wrap">
         {images.map((img) =>
           <Img
             key={img.index}

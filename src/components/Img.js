@@ -11,6 +11,11 @@ class Img extends Component {
       <figure onClick={() => this.props.toggleFavourite(img.index)}>
         <img src={img.image_url} alt="" id={img.id}/>
         <figcaption>{img.isFavourite ? 'Favourite' : ''}</figcaption>
+        <div className="tooltip">
+          <p>
+            {img.isFavourite ? 'Click to REMOVE from favourite' : 'Click to ADD to favourite' }
+          </p>
+        </div>
       </figure>
     )
   }

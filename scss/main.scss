@@ -1,0 +1,111 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+* {
+  font-family: sans-serif;
+}
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  & > div {
+    width: calc(100% - 40px);
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding: 20px;
+    background-color: #ecf0f1;
+    min-height: calc(100vh - 40px);
+  }
+}
+nav {
+  width: 100%;
+  min-height: 50px;
+  height: 50px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  a {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #95a5a6;
+    color: #34495e;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 20px;
+    transition: all .3s;
+    &:hover {
+      background-color: #34495e;
+      color: #95a5a6;
+    }
+    &.active {
+      background-color: #34495e;
+      color: #95a5a6;
+    }
+  }
+}
+.images-wrap {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  figure {
+    position: relative;
+    margin: 0 5% 10px 0;
+    width: 30%;
+    background-color: #7f8c8d;
+    cursor: pointer;
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+    &:hover > .tooltip {
+      visibility: visible;
+      opacity: .6;
+    }
+    img {
+      width: calc(100% - 2px);
+      border: 1px solid #2c3e50;
+    }
+    figcaption {
+      min-height: 20px;
+      color: #2c3e50;
+      font-weight: bold;
+      text-align: center;
+    }
+    .tooltip {
+      visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ecf0f1;
+      color: #2c3e50;
+      transition: all .3s;
+      p {
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        margin: 0;
+        height: auto;
+        color: #2c3e50;
+      }
+    }
+  }
+}

@@ -7,7 +7,7 @@ class FavouriteImgs extends Component {
   render() {
     const { dispatch, images } = this.props;
     return (
-      <div>
+      <div className="images-wrap">
         {images.filter(img =>img.isFavourite).map((img) =>
           <Img
             key={img.index}

@@ -4,10 +4,10 @@ import { NavLink, withRouter } from 'react-router-dom';
 class Tabs extends Component {
   render() {
     return (
-      <div>
-        <NavLink to="/" >All</NavLink>
+      <nav>
+        <NavLink exact to="/">All</NavLink>
         <NavLink to="/favourites">Favourites</NavLink>
-      </div>
+      </nav>
     )
 
   }
