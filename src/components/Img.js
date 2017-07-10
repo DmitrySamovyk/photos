@@ -13,7 +13,7 @@ class Img extends Component {
         <figcaption>{img.isFavourite ? 'Favourite' : ''}</figcaption>
         <div className="tooltip">
           <p>
-            {img.isFavourite ? 'Click to REMOVE from favourite' : 'Click to ADD to favourite' }
+            {img.isFavourite ? 'Click to REMOVE from favourites' : 'Click to ADD to favourites' }
           </p>
         </div>
       </figure>

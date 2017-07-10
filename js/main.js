@@ -12742,7 +12742,7 @@ var Img = function (_Component) {
           _react2.default.createElement(
             'p',
             null,
-            img.isFavourite ? 'Click to REMOVE from favourite' : 'Click to ADD to favourite'
+            img.isFavourite ? 'Click to REMOVE from favourites' : 'Click to ADD to favourites'
           )
         )
       );
