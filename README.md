@@ -10,7 +10,7 @@ in console:
 
  - ```npm i```
  - ```npm run build```
- - ```node server.js```
+ - ```node server```
  
 Go to:
 [http://localhost:3030](http://localhost:3030)
