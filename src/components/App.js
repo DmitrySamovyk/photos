@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import AllImgs from './AllImgs';
 import FavouriteImgs from './FavouriteImgs';
 import Tabs from './Tabs';
-import * as getImagesAction from '../AC/Actions'
+import * as getImages from '../AC/Actions'
 
 class App extends Component {
   render() {
@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    if (this.props.startImages.images.length < 0) {
+    if (this.props.startImages.images.length === 0) {
       this.props.actions.getImages()
     }
   }
@@ -34,7 +34,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(getImagesAction, dispatch)
+    actions: bindActionCreators(getImages, dispatch)
   }
 }
 

@@ -7762,7 +7762,12 @@ var matchPath = function matchPath(pathname) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.getImages = getImages;
 exports.toggleFavourite = toggleFavourite;
+function getImages(index) {
+  return { type: 'GET_IMAGES', index: index };
+}
+
 function toggleFavourite(index) {
   return { type: 'TOGGLE_FAVOURITE', index: index };
 }
@@ -28701,7 +28706,7 @@ var _Tabs2 = _interopRequireDefault(_Tabs);
 
 var _Actions = __webpack_require__(66);
 
-var getImagesAction = _interopRequireWildcard(_Actions);
+var getImages = _interopRequireWildcard(_Actions);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -28736,7 +28741,7 @@ var App = function (_Component) {
   }, {
     key: 'componentWillMount',
     value: function componentWillMount() {
-      if (this.props.startImages.images.length < 0) {
+      if (this.props.startImages.images.length === 0) {
         this.props.actions.getImages();
       }
     }
@@ -28753,7 +28758,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: (0, _redux.bindActionCreators)(getImagesAction, dispatch)
+    actions: (0, _redux.bindActionCreators)(getImages, dispatch)
   };
 }
 
@@ -28979,6 +28984,7 @@ exports.default = function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments[1];
 
+  var newState = void 0;
   switch (action.type) {
     case 'SET_IMAGES':
       return newState = action.data;
@@ -29038,7 +29044,10 @@ exports.default = function (store) {
           data: response.data.photos
         });
       }).catch(function (error) {
-        console.log(error);
+        // Alert if no connect to network
+        if (error == 'Error: Network Error') {
+          alert("Нет соединения с интернетом!!!");
+        }
       });
     };
   };

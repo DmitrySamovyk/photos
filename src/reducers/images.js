@@ -1,6 +1,7 @@
 const initialState = [];
 
 export default function (state = initialState, action) {
+  let newState;
   switch (action.type) {
     case 'SET_IMAGES':
       return newState = action.data;
