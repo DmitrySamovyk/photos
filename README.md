@@ -11,4 +11,5 @@ in console:
  - node server.js
  - npm run build
  
-Go to: [http://localhost:3030] 
+Go to:
+[http://localhost:3030](http://localhost:3030)
