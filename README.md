@@ -8,9 +8,9 @@ npm - v5.0.3
 
 in console:
 
- - npm i
- - npm run build
- - node server.js
+ - ```npm i```
+ - ```npm run build```
+ - ```node server.js```
  
 Go to:
 [http://localhost:3030](http://localhost:3030)
