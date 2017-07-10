@@ -3,8 +3,7 @@ const initialState = [];
 export default function (state = initialState, action) {
   switch (action.type) {
     case 'SET_IMAGES':
-      state = action.data;
-      return state;
+      return newState = action.data;
     case 'TOGGLE_FAVOURITE':
       let isFavourite= {
         isFavourite: !state[action.index].isFavourite

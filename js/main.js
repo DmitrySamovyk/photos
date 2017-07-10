@@ -7762,21 +7762,7 @@ var matchPath = function matchPath(pathname) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getImages = getImages;
-exports.setImages = setImages;
 exports.toggleFavourite = toggleFavourite;
-function getImages() {
-  return {
-    type: 'GET_IMAGES'
-  };
-}
-
-function setImages() {
-  return {
-    type: 'SET_IMAGES'
-  };
-}
-
 function toggleFavourite(index) {
   return { type: 'TOGGLE_FAVOURITE', index: index };
 }
@@ -12724,7 +12710,11 @@ var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _redux = __webpack_require__(58);
+
 var _reactRedux = __webpack_require__(29);
+
+var _Actions = __webpack_require__(66);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -12746,11 +12736,15 @@ var Img = function (_Component) {
   _createClass(Img, [{
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var img = this.props.img;
 
       return _react2.default.createElement(
         'figure',
-        { onClick: this.props.onClick },
+        { onClick: function onClick() {
+            return _this2.props.toggleFavourite(img.index);
+          } },
         _react2.default.createElement('img', { src: img.image_url, alt: '', id: img.id }),
         _react2.default.createElement(
           'figcaption',
@@ -12766,6 +12760,7 @@ var Img = function (_Component) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    toggleFavourite: (0, _redux.bindActionCreators)(_Actions.toggleFavourite, dispatch),
     dispatch: dispatch
   };
 }
@@ -28741,7 +28736,7 @@ var App = function (_Component) {
   }, {
     key: 'componentWillMount',
     value: function componentWillMount() {
-      if (this.props.startImages.images.length === 0) {
+      if (this.props.startImages.images.length < 0) {
         this.props.actions.getImages();
       }
     }
@@ -28783,8 +28778,6 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(29);
 
-var _Actions = __webpack_require__(66);
-
 var _Img = __webpack_require__(113);
 
 var _Img2 = _interopRequireDefault(_Img);
@@ -28819,10 +28812,7 @@ var AllImgs = function (_Component) {
         images.map(function (img) {
           return _react2.default.createElement(_Img2.default, {
             key: img.index,
-            img: img,
-            onClick: function onClick() {
-              return dispatch((0, _Actions.toggleFavourite)(img.index));
-            }
+            img: img
           });
         })
       );
@@ -28858,8 +28848,6 @@ var _react = __webpack_require__(6);
 var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(29);
-
-var _Actions = __webpack_require__(66);
 
 var _Img = __webpack_require__(113);
 
@@ -28897,10 +28885,7 @@ var FavouriteImgs = function (_Component) {
         }).map(function (img) {
           return _react2.default.createElement(_Img2.default, {
             key: img.index,
-            img: img,
-            onClick: function onClick() {
-              return dispatch((0, _Actions.toggleFavourite)(img.index));
-            }
+            img: img
           });
         })
       );
@@ -28996,8 +28981,7 @@ exports.default = function () {
 
   switch (action.type) {
     case 'SET_IMAGES':
-      state = action.data;
-      return state;
+      return newState = action.data;
     case 'TOGGLE_FAVOURITE':
       var isFavourite = {
         isFavourite: !state[action.index].isFavourite
@@ -29045,8 +29029,7 @@ exports.default = function (store) {
           consumer_key: key
         }
       }).then(function (response) {
-        store = response.data.photos;
-        store.map(function (img, index) {
+        response.data.photos.map(function (img, index) {
           img.isFavourite = false;
           img.index = index;
         });

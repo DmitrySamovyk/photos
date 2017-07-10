@@ -9,8 +9,7 @@ export default store => next => action => {
     }
   })
     .then(function (response) {
-      store = response.data.photos;
-      store.map((img, index) => {
+    response.data.photos.map((img, index) => {
         img.isFavourite = false;
         img.index = index;
       });

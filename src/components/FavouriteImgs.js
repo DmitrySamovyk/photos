@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
-import { toggleFavourite } from '../AC/Actions';
-
 import Img from './Img'
 
 class FavouriteImgs extends Component {
@@ -14,9 +12,7 @@ class FavouriteImgs extends Component {
           <Img
             key={img.index}
             img={img}
-            onClick = {() => dispatch(toggleFavourite(img.index))}
           />
-
         )}
       </div>
     )

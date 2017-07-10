@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    if (this.props.startImages.images.length === 0) {
+    if (this.props.startImages.images.length < 0) {
       this.props.actions.getImages()
     }
   }
